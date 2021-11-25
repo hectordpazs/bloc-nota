@@ -1,0 +1,17 @@
+h1{
+    color: green;
+}
+
+.btn{
+    color: white;
+    background-color: green;
+    padding: 10px;
+    position: relative;
+    left: 15%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.btn:hover{
+    background-color: darkgreen;
+}
