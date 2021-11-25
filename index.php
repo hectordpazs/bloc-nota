@@ -3,7 +3,7 @@ if(isset($_POST['btn'])){
     $msg=null;
 if(isset($_POST["directorio"])){
     $carpeta=htmlspecialchars($_POST["carpeta"]);
-    $ruta=htmlspecialchars($_POST["ruta"]);
+    $ruta="Archivos/";
     $directorio=$ruta.$carpeta;
 }
 if(!is_dir($directorio)){
@@ -23,7 +23,7 @@ if(isset($_POST['btn2'])){
 if(isset($_POST["escribir"])){
     $nombre=htmlspecialchars($_POST["nombre"]);
     $contenido=$_POST["contenido"];
-    $ruta2= $_POST["ruta2"]."/".$nombre.".txt";
+    $ruta2= "Archivos/".$nombre.".txt";
 
     $manejador= fopen($ruta2, 'a');
 
@@ -58,11 +58,6 @@ if(isset($_POST["escribir"])){
                 <td>Nombre del Directorio: </td>
                 <td><input type="text" name="carpeta" id="carpeta"></td>
             </tr>
-            <tr>
-                <td>Ruta del Directorio: </td>
-                <td><input type="text" name="ruta" id="ruta"></td>
-                <td>Por Ejemplo: C:\</td>
-            </tr>
         </table>
 
         <input type="hidden" name="directorio" id="directorio">
@@ -83,11 +78,6 @@ if(isset($_POST["escribir"])){
             <tr>
                 <td>Contenido del archivo: </td>
                 <td><textarea name="contenido" cols="30" rows="10"></textarea></td>
-            </tr>
-            <tr>
-                <td>Ruta del archivo: </td>
-                <td><input type="text" name="ruta2" id="ruta2"></td>
-                <td>Por Ejemplo: C:\carpeta de pruebas</td>
             </tr>
         </table>
 
