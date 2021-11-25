@@ -10,6 +10,7 @@ if(!is_dir($directorio)){
     $crear= mkdir($directorio, 0777, true);
     if($crear){
         $msg= "directorio $directorio creado correctamente";
+        $msg.=" lo puedes ver en <a href='Archivos'>este link</a>";
     }else{
         $msg="ha ocurrido un error al crear el directorio";
     }
@@ -29,7 +30,7 @@ if(isset($_POST["escribir"])){
 
     if(fwrite($manejador, $contenido)){
         $msg2="Archivo creado con exito ";
-        $msg2.="puedes verlo en la ruta de tu pc donde lo guardaste la ruta es: ".$ruta2;
+        $msg2.=" lo puedes ver en <a href='Archivos'>este link</a>";
     }
     else{
         $msg2 = "ocurrio un error en la creacion del archivo";
