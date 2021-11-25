@@ -5,18 +5,32 @@ if(isset($_POST["directorio"])){
     $carpeta=htmlspecialchars($_POST["carpeta"]);
     $ruta="Archivos/";
     $directorio=$ruta.$carpeta;
-}
-if(!is_dir($directorio)){
-    $crear= mkdir($directorio, 0777, true);
-    if($crear){
-        $msg= "directorio $directorio creado correctamente";
-        $msg.=" lo puedes ver en <a href='Archivos'>este link</a>";
+
+    if(!is_dir($directorio)){
+        $crear= mkdir($directorio, 0777, true);
+        if($crear){
+            
+            $nombre2="index";
+            $contenido2="dentro de la carpeta $carpeta";
+            $ruta3= $directorio."$nombre2.html";
+
+            $manejador2= fopen($ruta3, 'a');
+
+        if(fwrite($manejador2, $contenido2)){
+            $msg="Directorio creado con exito";
+            $msg.=" lo puedes ver en <a href='$ruta3'>este link</a>";
+        }
+    
+        }else{
+            $msg="ha ocurrido un error al crear el directorio";
+        }
     }else{
-        $msg="ha ocurrido un error al crear el directorio";
+        $msg="el directorio ya existe";
     }
-}else{
-    $msg="el directorio ya existe";
+
+    
 }
+
 }
 
 if(isset($_POST['btn2'])){
@@ -24,13 +38,13 @@ if(isset($_POST['btn2'])){
 if(isset($_POST["escribir"])){
     $nombre=htmlspecialchars($_POST["nombre"]);
     $contenido=$_POST["contenido"];
-    $ruta2= "Archivos/".$nombre.".txt";
+    $ruta2= "Archivos/".$nombre.".html";
 
     $manejador= fopen($ruta2, 'a');
 
     if(fwrite($manejador, $contenido)){
         $msg2="Archivo creado con exito ";
-        $msg2.=" lo puedes ver en <a href='Archivos'>este link</a>";
+        $msg2.=" lo puedes ver en <a href='$ruta2'>este link</a>";
     }
     else{
         $msg2 = "ocurrio un error en la creacion del archivo";
